@@ -1,0 +1,15 @@
+# Webサーバの設定
+webserver:
+ image: wordpress
+ ports: 
+  - "80:80"
+ links: 
+  - "dbserver:mysql"
+
+# DBサーバの設定
+dbserver:
+ image: mysql
+ volumes_from: 
+  - "dataonly"
+ environment: 
+  MYSQL_ROOT_PASSWORD: password 
